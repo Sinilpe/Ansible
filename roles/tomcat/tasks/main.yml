@@ -1,0 +1,10 @@
+
+  - name: install tomcat9
+    apt: name=tomcat9 state=present
+
+  - name: start tomcat9
+    service: name=tomcat9 state=started
+  - name: Deploy war file
+    get_url: url=https://tomcat.apache.org/tomcat-8.5-doc/appdev/sample/sample.war dest=/usr/share/tomcat9/webapps
+    notify: restart tomcat9
+
